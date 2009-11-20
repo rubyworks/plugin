@@ -1,8 +1,48 @@
-= Plug
+= Plugin
+
+* home: http://rubyworks.github.com/plugin
+
 
 == DESCRIPTION
 
-Plug is a straighforward plugin manager for Ruby.
+Plugin is a straighforward plugin manager for Ruby.
 It can handle RubyGems, Rolls and Ruby's standard
 site locals.
+
+
+== USAGE
+
+The Plugin library does two signifficant things. First it designates
+a location in the ruby $LOAD_PATH for plugins. Second it provides
+an easy to use function for finding plugins scripts stored in the
+designated location.
+
+Place all plugin code in your project's <tt>lib/plugin/<name>/</tt>,
+or if you have alterated the load path for your project, you can
+place it in the alternative location under 'plugin/<name>'.
+
+To find plugins, simply provide a path or file glob to the
+<tt>Plugin.find</tt> function, and it will return all matches
+found within current and most recent versions of libraries.
+
+For example, it wil be common for pluggable applications to load all
+the plugins they find:
+
+  require 'plugin'
+
+  Plugin.find('myapp/*.rb').each do |file|
+    require file
+  end
+
+Alternately you might load plugins only as needs. Say, it a command-line
+call required it.
+
+
+== COPYRIGHTS
+
+Copyright (c) 2009 Thomas Sawyer
+
+Plugin is release under the terms of the LGPL.
+
+See COPYING for details.
 
