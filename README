@@ -1,0 +1,8 @@
+= Plug
+
+== DESCRIPTION
+
+Plug is a straighforward plugin manager for Ruby.
+It can handle RubyGems, Rolls and Ruby's standard
+site locals.
+

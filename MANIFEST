@@ -1,0 +1,19 @@
+#!mast -x Syckfile bin lib meta test [A-Z]*
+lib/plugin.rb
+meta/authors
+meta/contact
+meta/created
+meta/description
+meta/homepage
+meta/license
+meta/name
+meta/released
+meta/repository
+meta/ruby
+meta/suite
+meta/summary
+meta/title
+meta/version
+README
+HISTORY
+COPYING
