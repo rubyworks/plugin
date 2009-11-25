@@ -1,41 +1,43 @@
 = Plugin
 
 * home: http://rubyworks.github.com/plugin
+* source: http://github.com/rubyworks/plugin
 
 
 == DESCRIPTION
 
-Plugin is a straighforward plugin manager for Ruby.
-It can handle RubyGems, Rolls and Ruby's standard
-site locals.
-
-
-== USAGE
+Plugin is a straighforward plugin manager for Ruby. It can handle
+RubyGems, Rolls and Ruby's standard site locals. It is both more
+flexible and more robust the using Gem.find_files or searching the
+$LOAD_PATH manually.
 
 The Plugin library does two signifficant things. First it designates
 a location in the ruby $LOAD_PATH for plugins. Second it provides
-an easy to use function for finding plugins scripts stored in the
+an easy to use function for finding plugin scripts stored in the
 designated location.
 
-Place all plugin code in your project's <tt>lib/plugin/<name>/</tt>,
-or if you have alterated the load path for your project, you can
-place it in the alternative location under 'plugin/<name>'.
+== USAGE
 
-To find plugins, simply provide a path or file glob to the
-<tt>Plugin.find</tt> function, and it will return all matches
-found within current and most recent versions of libraries.
+Place all plugins for you projectt in <tt>lib/plugin/<name>/</tt>.
+Or if you have altered the load path for your project, you can
+place it in the alternate location under <tt>plugin/<name></tt>.
+However, this is not a recommended practice.
 
-For example, it wil be common for pluggable applications to load all
-the plugins they find:
+To find plugins, simply provide a glob to the <tt>Plugin.find</tt> function,
+and it will return all matches found within current and/or most recent versions
+of libraries.
+
+For example, a common use case for a pluggable application is to require all
+the plugins found:
 
   require 'plugin'
 
   Plugin.find('myapp/*.rb').each do |file|
-    require file
+    require(file)
   end
 
-Alternately you might load plugins only as needs. Say, it a command-line
-call required it.
+Alternately you might load plugins only as needed. For instance, if a command-line
+option calls for it.
 
 
 == COPYRIGHTS
