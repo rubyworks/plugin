@@ -98,6 +98,24 @@
               <a href="classes/Plugin.html#M000000">#find</a>
             </li>
           
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Plugin</span>
+              <a href="classes/Plugin.html#M000004">#find_gems</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Plugin</span>
+              <a href="classes/Plugin.html#M000003">#find_loadpath</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Plugin</span>
+              <a href="classes/Plugin.html#M000002">#find_roll</a>
+            </li>
+          
         </ul>
       </div>
 
@@ -108,7 +126,7 @@
       <div style="float: right; margin-right: 5px;">
         <a href="http://validator.w3.org/check/referer"><img src="assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
       </div>
-      Generated with <a href="http://github.com/proutils/webri">WebRI RedFish</a> 1.0.0
+      Generated with <a href="http://github.com/proutils/webri">WebRI RedFish</a> 1.1
       <br/><br/> 
     </div>
   </div>
@@ -144,6 +162,12 @@
     
       <li><a href="classes/Plugin.html#M000000">#find &mdash; Plugin</a></li>
     
+      <li><a href="classes/Plugin.html#M000004">#find_gems &mdash; Plugin</a></li>
+    
+      <li><a href="classes/Plugin.html#M000003">#find_loadpath &mdash; Plugin</a></li>
+    
+      <li><a href="classes/Plugin.html#M000002">#find_roll &mdash; Plugin</a></li>
+    
   </ul>
 -->
 
@@ -155,35 +179,40 @@
 href="http://rubyworks.github.com/plugin">rubyworks.github.com/plugin</a>
 
 </li>
+<li>source: <a
+href="http://github.com/rubyworks/plugin">github.com/rubyworks/plugin</a>
+
+</li>
 </ul>
 <h2>DESCRIPTION</h2>
 <p>
 <a href="../classes/Plugin.html">Plugin</a> is a straighforward plugin
 manager for Ruby. It can handle RubyGems, Rolls and Ruby&#8217;s standard
-site locals.
+site locals. It is both more flexible and more robust the using
+Gem.find_files or searching the $LOAD_PATH manually.
 </p>
-<h2>USAGE</h2>
 <p>
 The <a href="../classes/Plugin.html">Plugin</a> library does two
 signifficant things. First it designates a location in the ruby $LOAD_PATH
 for plugins. Second it provides an easy to use function for finding plugin
 scripts stored in the designated location.
 </p>
+<h2>USAGE</h2>
 <p>
-Place all plugin code in your project&#8217;s
-<tt>lib/plugin/&lt;name&gt;/</tt>, or if you have altered the load path for
-your project, you can place it in the alternae location under
-<tt>plugin/&lt;name&gt;</tt>.
+Place all plugins for you projectt in <tt>lib/plugin/&lt;name&gt;/</tt>. Or
+if you have altered the load path for your project, you can place it in the
+alternate location under <tt>plugin/&lt;name&gt;</tt>. However, this is not
+a recommended practice.
 </p>
 <p>
-To find plugins, simply provide a path or file glob to the <tt><a
+To find plugins, simply provide a glob to the <tt><a
 href="../classes/Plugin.html#M000000">Plugin.find</a></tt> function, and it
-will return all matches found within current and most recent versions of
+will return all matches found within current and/or most recent versions of
 libraries.
 </p>
 <p>
-For example, it wil be common for pluggable applications to require all the
-plugins they find:
+For example, a common use case for a pluggable application is to require
+all the plugins found:
 </p>
 <pre>
   require 'plugin'
@@ -193,8 +222,8 @@ plugins they find:
   end
 </pre>
 <p>
-Alternately you might load plugins only as needs. Say, it a command-line
-call required it.
+Alternately you might load plugins only as needed. For instance, if a
+command-line option calls for it.
 </p>
 <h2>COPYRIGHTS</h2>
 <p>

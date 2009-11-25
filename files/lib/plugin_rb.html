@@ -46,7 +46,7 @@
       <h3 class="section-header">File Stats</h3>
       <dl>
         <dt class="modified-date">Last Modified</dt>
-        <dd class="modified-date">Fri Nov 20 10:43:16 -0500 2009</dd>
+        <dd class="modified-date">Tue Nov 24 21:13:29 -0500 2009</dd>
 
         
 
@@ -111,6 +111,24 @@
               <a href="classes/Plugin.html#M000000">#find</a>
             </li>
           
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Plugin</span>
+              <a href="classes/Plugin.html#M000004">#find_gems</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Plugin</span>
+              <a href="classes/Plugin.html#M000003">#find_loadpath</a>
+            </li>
+          
+            
+            <li class="method" style="clear: both;">
+              <span class="method-parent-aside">Plugin</span>
+              <a href="classes/Plugin.html#M000002">#find_roll</a>
+            </li>
+          
         </ul>
       </div>
     </div>
@@ -120,7 +138,7 @@
       <div style="float: right; margin-right: 5px;">
         <a href="http://validator.w3.org/check/referer"><img src="../../assets/icon/check.png" alt="[Validate]" height="16" width="16" /></a>
       </div>
-      Generated with <a href="http://proutils.github.com/webri">WebRI Redfish</a> 1.0.0
+      Generated with <a href="http://proutils.github.com/webri">WebRI Redfish</a> 1.1
       <br/><br/>
     </div>
   </div>
@@ -140,6 +158,41 @@
     <h1><a href="../../classes/Plugin.html">Plugin</a> Handler</h1>
 <p>
 Find plugins across various library managers.
+</p>
+<p>
+All plugins are expected to be within a libraries designated loadpath(s)
+under a <tt>plugin/</tt> subdirectory. By using this assigned space, ie.
+<tt>plugin/<tt>, plugins are kept isolated from normal libary scripts. This
+helps prevent inadvertent name clashes.
+</p>
+<h2>How To Use</h2>
+<p>
+Usage is very simple. Just supply a glob to the <tt><a
+href="../../classes/Plugin.html#M000000">Plugin.find</a></tt> function.
+</p>
+<pre>
+    Plugin.find('syckle/*')
+</pre>
+<p>
+A shortcut is provided with <tt>[]</tt>.
+</p>
+<pre>
+    Plugin['syckle/*']
+</pre>
+<h2>A Note on RubyGems</h2>
+<p>
+A way has not yet been devised to isolate the actived version of a gem from
+the latest inactive version. Therefore some overlap can occur if an older
+version of a plugin-containing gem has been activated prior to calling <a
+href="../../classes/Plugin.html#M000000">Plugin.find()</a>. Such an
+occurance will be rare (considering the use cases of plugins), so it is
+nothing to be overly concerned about. Moreover, it is a long-way from the
+offical Gems plugin policy which is to find all matching files from
+<b>all</b> versions using Gem.find_files(). I quote Eric Hodel,
+&#8220;It&#8217;s an encouragement to make your plugin files as light as
+possible, such as requiring an additional file or calling some very stable
+API.&#8221; While an understandable encouragment, ultimately it is not a
+robust solution.
 </p>
 
   </div>
