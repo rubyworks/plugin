@@ -1,8 +1,33 @@
 = RELEASE HISTORY
 
-== 0.1 / 2009-11-19
 
-This is the initial release of Plug.
+== 1.1 / 2009-11-19
+
+This release includes two significant adjustments.
+
+First, the conventional plugin directory has been renamed to 'plugins/',
+instead of 'plugin/'. I frequently shy away from plural names
+(as in the tendency in Ruby), but in this case I believe it helps
+differentiate it from regular library directories. It also frees 'plugin/'
+should any separate scripts be required for this project in the future.
+
+Second, should one need to search outside of the conventional 'plugins/'
+location, the #find method will accept a :directory option. This usage
+is discouraged, but is made available for the rare cases in which it
+might prove necessary.
+
+Changes:
+
+* Standard Plugin directory is 'plugins/' instead of 'plugin/'.
+* Can specify an alternate plugin directory by passing an option to #find.
+
+
+== 1.0 / 2009-11-24
+
+This is the first official public release of Plugin.
+Plugin provides a very easy way to locate plugins, and
+this making it super easy for your project to support
+pluggable components.
 
 Changes:
 

@@ -16,12 +16,12 @@ a location in the ruby $LOAD_PATH for plugins. Second it provides
 an easy to use function for finding plugin scripts stored in the
 designated location.
 
+
 == USAGE
 
-Place all plugins for you projectt in <tt>lib/plugin/<name>/</tt>.
+Place all plugins for your project in <tt>lib/plugins/<name>/</tt>.
 Or if you have altered the load path for your project, you can
-place it in the alternate location under <tt>plugin/<name></tt>.
-However, this is not a recommended practice.
+place them in the alternate location, <tt><alternate-loadpath>/plugins/<name>/</tt>.[1]
 
 To find plugins, simply provide a glob to the <tt>Plugin.find</tt> function,
 and it will return all matches found within current and/or most recent versions
@@ -38,6 +38,8 @@ the plugins found:
 
 Alternately you might load plugins only as needed. For instance, if a command-line
 option calls for it.
+
+[1] Alterating the conventional load path shoud be avoided whenever possible.
 
 
 == COPYRIGHTS
