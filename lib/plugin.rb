@@ -2,11 +2,17 @@
 #
 # Find plugins across various library managers.
 #
-# All plugins are expected to be within a libraries designated
-# loadpath(s) under a <tt>plugin/</tt> subdirectory. By using
-# this assigned space, ie. <tt>plugin/<tt>, plugins are kept
-# isolated from normal libary scripts. This helps prevent 
-# inadvertent name clashes.
+# All plugins are expected to be within a library's designated
+# loadpath(s) under a toplevel <tt>plugins/</tt> subdirectory.
+# By using this assigned space plugins are kept isolated from
+# normal library scripts, which helps prevent inadvertent
+# name clashes.
+#
+# For example, lets say we want to create a pluggable template
+# system for our "luckyweb" project. Our <tt>lib/</tt>
+# directory would have the usual <tt>luckyweb</tt> directory,
+# but also now a <tt>plugins/luckyweb/</tt> path in which the
+# plugin templates would be stored.
 #
 # == How To Use
 #
@@ -18,6 +24,16 @@
 # A shortcut is provided with <tt>[]</tt>.
 #
 #     Plugin['syckle/*']
+#
+# == Alternate Plugin Location
+#
+# By default <tt>plugins/</tt> is hardcoded into the system
+# as a reliable convention. This is intentional. However,
+# if you have specific need for serching for files outside
+# that directory you can do so by supplying a <tt>:directory</tt>
+# option to the <tt>#find</tt> command. Eg.
+#
+#     Plugin.find('discover.rb', :directory=>'rdoc')
 #
 # == A Note on RubyGems
 #
@@ -38,7 +54,7 @@ module Plugin
 
   extend self
 
-  DIRECTORY = 'plugin'
+  DIRECTORY = 'plugins'
 
   # Find plugins, searching through standard $LOAD_PATH,
   # Roll Libraries and RubyGems.
@@ -47,11 +63,11 @@ module Plugin
   #
   #   Plugins.find('syckle/*')
   #
-  def find(match)
+  def find(match, options={})
     plugins = []
-    plugins.concat find_roll(match)
-    plugins.concat find_loadpath(match)
-    plugins.concat find_gems(match)
+    plugins.concat find_roll(match, options)
+    plugins.concat find_loadpath(match, options)
+    plugins.concat find_gems(match, options)
     plugins.uniq
   end
 
@@ -64,13 +80,14 @@ module Plugin
 
   # Search roll for current or latest libraries.
 
-  def find_roll(match)
+  def find_roll(match, options={})
     plugins = []
+    directory = options[:directory] || DIRECTORY
     if defined?(::Roll)
       ::Roll::Library.ledger.each do |name, lib|
         lib = lib.sort.first if Array===lib
         lib.loadpath.each do |path|
-          find = File.join(lib.location, path, DIRECTORY, match)
+          find = File.join(lib.location, path, directory, match)
           list = Dir.glob(find)
           list = list.map{ |d| d.chomp('/') }
           plugins.concat(list)
@@ -84,10 +101,11 @@ module Plugin
   #
   # Activated gem versions are in here too.
 
-  def find_loadpath(match)
+  def find_loadpath(match, options={})
     plugins = []
+    directory = options[:directory] || DIRECTORY
     $LOAD_PATH.uniq.each do |path|
-      list = Dir.glob(File.join(path, DIRECTORY, match))
+      list = Dir.glob(File.join(path, directory, match))
       #dirs = dirs.select{ |d| File.directory?(d) }
       list = list.map{ |d| d.chomp('/') }
       plugins.concat(list)
@@ -99,14 +117,17 @@ module Plugin
   #
   # TODO: Is there anyway to skip active gems?
 
-  def find_gems(match)
+  def find_gems(match, options={})
+    plugins = []
+    directory = options[:directory] || DIRECTORY
     if defined?(::Gem)
-      Gem.latest_load_paths do |path|
-        list = Dir.glob(File.join(path, DIRECTORY, match))
+      ::Gem.latest_load_paths do |path|
+        list = Dir.glob(File.join(path, directory, match))
         list = list.map{ |d| d.chomp('/') }
         plugins.concat(list)
       end
     end
+    plugins
   end
 
 end
