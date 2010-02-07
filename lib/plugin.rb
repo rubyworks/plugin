@@ -105,6 +105,7 @@ module Plugin
     plugins = []
     directory = options[:directory] || DIRECTORY
     $LOAD_PATH.uniq.each do |path|
+      path = File.expand_path(path)
       list = Dir.glob(File.join(path, directory, match))
       #dirs = dirs.select{ |d| File.directory?(d) }
       list = list.map{ |d| d.chomp('/') }
