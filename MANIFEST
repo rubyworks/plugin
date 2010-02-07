@@ -17,6 +17,6 @@ meta/version
 test/demos/helper.rb
 test/demos/plugins/example.rb
 test/demos/usage.rdoc
-README
+README.rdoc
 HISTORY
 COPYING

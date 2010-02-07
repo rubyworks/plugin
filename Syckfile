@@ -1,25 +1,30 @@
 ---
-automatic: true
+email:
+  mailto : transfire@gmail.com
+  active : true
+
+grancher:
+  active: true
 
 box:
   types  : [ gem, gz ]
   include: [ bin, doc, lib, meta, test, "[A-Z]*" ]
-  exclude: [ doc/rdoc, doc/ri ]
-  spec   : true
+  exclude: [ doc/rdoc, doc/ri, Syckfile ]
+  spec   : false
 
-dnote:
-  priority: -1
-  active  : true
+rdoc:
+  exclude: [Syckfile]
+  active : true
+
+ridoc:
+  exclude: [Syckfile]
+  active : true
 
 stats:
   priority: -1
   active  : true
 
-#ridoc:
-#  exclude: []
-#  active : true
-
-email:
-  mailto : transfire@gmail.com
-  active : true
+dnote:
+  priority: -1
+  active  : true
 
