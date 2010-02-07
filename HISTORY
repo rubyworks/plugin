@@ -20,6 +20,7 @@ Changes:
 
 * Standard Plugin directory is 'plugins/' instead of 'plugin/'.
 * Can specify an alternate plugin directory by passing an option to #find.
+* $LOAD_PATHS are expanded, so all paths are returned as full path names.
 
 
 == 1.0 / 2009-11-24
