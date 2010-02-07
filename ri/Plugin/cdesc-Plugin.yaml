@@ -1,0 +1,58 @@
+--- !ruby/object:RDoc::RI::ModuleDescription 
+attributes: []
+
+class_methods: []
+
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 1
+  text: Plugin Handler
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Find plugins across various library managers.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: All plugins are expected to be within a library's designated loadpath(s) under a toplevel <tt>plugins/</tt> subdirectory. By using this assigned space plugins are kept isolated from normal library scripts, which helps prevent inadvertent name clashes.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: For example, lets say we want to create a pluggable template system for our &quot;luckyweb&quot; project. Our <tt>lib/</tt> directory would have the usual <tt>luckyweb</tt> directory, but also now a <tt>plugins/luckyweb/</tt> path in which the plugin templates would be stored.
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 2
+  text: How To Use
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Usage is very simple. Just supply a glob to the <tt>Plugin.find</tt> function.
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  body: "    Plugin.find('syckle/*')\n"
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: A shortcut is provided with <tt>[]</tt>.
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  body: "    Plugin['syckle/*']\n"
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 2
+  text: Alternate Plugin Location
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: By default <tt>plugins/</tt> is hardcoded into the system as a reliable convention. This is intentional. However, if you have specific need for serching for files outside that directory you can do so by supplying a <tt>:directory</tt> option to the <tt>#find</tt> command. Eg.
+- !ruby/struct:RDoc::Markup::Flow::VERB 
+  body: "    Plugin.find('discover.rb', :directory=&gt;'rdoc')\n"
+- !ruby/struct:RDoc::Markup::Flow::H 
+  level: 2
+  text: A Note on RubyGems
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: A way has not yet been devised to isolate the actived version of a gem from the latest inactive version. Therefore some overlap can occur if an older version of a plugin-containing gem has been activated prior to calling Plugin.find(). Such an occurance will be rare (considering the use cases of plugins), so it is nothing to be overly concerned about. Moreover, it is a long-way from the offical Gems plugin policy which is to find all matching files from <b>all</b> versions using Gem.find_files(). I quote Eric Hodel, &quot;It's an encouragement to make your plugin files as light as possible, such as requiring an additional file or calling some very stable API.&quot; While an understandable encouragment, ultimately it is not a robust solution.
+constants: 
+- !ruby/object:RDoc::RI::Constant 
+  comment: 
+  name: DIRECTORY
+  value: "'plugins'"
+full_name: Plugin
+includes: []
+
+instance_methods: 
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: "[]"
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: find
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: find_gems
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: find_loadpath
+- !ruby/object:RDoc::RI::MethodSummary 
+  name: find_roll
+name: Plugin

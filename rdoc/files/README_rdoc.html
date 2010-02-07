@@ -5,7 +5,7 @@
 <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-  <title>File: Syckfile [Plugin]</title>
+  <title>File: README.rdoc [Plugin]</title>
 
   <link rel="SHORTCUT ICON" href="../assets/icon/file.png">
 
@@ -37,7 +37,7 @@
     <h1>
       <img src="../assets/icon/file.png" align="absmiddle">&nbsp;
       <a href="../index.html">Plugin</a>&nbsp;
-      <a href="/">Syckfile</a>
+      <a href="/">README.rdoc</a>
     </h1>
   </div>
 
@@ -46,7 +46,7 @@
       <h3 class="section-header">File Stats</h3>
       <dl>
         <dt class="modified-date">Last Modified</dt>
-        <dd class="modified-date">Thu Nov 19 22:04:18 -0500 2009</dd>
+        <dd class="modified-date">Tue Jan 26 16:18:29 -0500 2010</dd>
 
         
 
@@ -63,11 +63,9 @@
         
           <li class="file"><a href="../files/HISTORY.html">HISTORY</a></li>
         
-          <li class="file"><a href="../files/Syckfile.html">Syckfile</a></li>
-        
           <li class="file"><a href="../files/COPYING.html">COPYING</a></li>
         
-          <li class="file"><a href="../files/README.html">README</a></li>
+          <li class="file"><a href="../files/README_rdoc.html">README.rdoc</a></li>
         
         </ul>
       </div>
@@ -155,42 +153,74 @@
    -->
 
   <div id="documentation">
-    <hr size="1"></hr><p>
-automatic: true
+    <h1><a href="../classes/Plugin.html">Plugin</a></h1>
+<ul>
+<li>home: <a
+href="http://rubyworks.github.com/plugin">rubyworks.github.com/plugin</a>
+
+</li>
+<li>source: <a
+href="http://github.com/rubyworks/plugin">github.com/rubyworks/plugin</a>
+
+</li>
+</ul>
+<h2>DESCRIPTION</h2>
+<p>
+<a href="../classes/Plugin.html">Plugin</a> is a straighforward plugin
+manager for Ruby. It can handle RubyGems, Rolls and Ruby&#8217;s standard
+site locals. It is both more flexible and more robust the using
+Gem.find_files or searching the $LOAD_PATH manually.
 </p>
 <p>
-box:
+The <a href="../classes/Plugin.html">Plugin</a> library does two
+signifficant things. First it designates a location in the ruby $LOAD_PATH
+for plugins. Second it provides an easy to use function for finding plugin
+scripts stored in the designated location.
+</p>
+<h2>USAGE</h2>
+<p>
+Place all plugins for your project in <tt>lib/plugins/&lt;name&gt;/</tt>.
+Or if you have altered the load path for your project, you can place them
+in the alternate location,
+<tt>&lt;alternate-loadpath&gt;/plugins/&lt;name&gt;/</tt>.[1]
+</p>
+<p>
+To find plugins, simply provide a glob to the <tt><a
+href="../classes/Plugin.html#M000000">Plugin.find</a></tt> function, and it
+will return all matches found within current and/or most recent versions of
+libraries.
+</p>
+<p>
+For example, a common use case for a pluggable application is to require
+all the plugins found:
 </p>
 <pre>
-  types  : [ gem, gz ]
-  include: [ bin, doc, lib, meta, test, &quot;[A-Z]*&quot; ]
-  exclude: [ doc/rdoc, doc/ri ]
-  spec   : true
+  require 'plugin'
+
+  Plugin.find('myapp/*.rb').each do |file|
+    require(file)
+  end
 </pre>
 <p>
-dnote:
+Alternately you might load plugins only as needed. For instance, if a
+command-line option calls for it.
 </p>
-<pre>
-  priority: -1
-  active  : true
-</pre>
+<dl>
+<dt>1</dt><dd>Alterating the conventional load path shoud be avoided whenever possible.
+
+</dd>
+</dl>
+<h2>COPYRIGHTS</h2>
 <p>
-stats:
-</p>
-<pre>
-  priority: -1
-  active  : true
-</pre>
-<p>
-ridoc: # exclude: [] # active : true
+Copyright &#169; 2009 Thomas Sawyer
 </p>
 <p>
-email:
+<a href="../classes/Plugin.html">Plugin</a> is release under the terms of
+the LGPL.
 </p>
-<pre>
-  mailto : transfire@gmail.com
-  active : true
-</pre>
+<p>
+See <a href="COPYING.html">COPYING</a> for details.
+</p>
 
   </div>
 

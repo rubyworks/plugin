@@ -1,0 +1,14 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Search standard $LOAD_PATH.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Activated gem versions are in here too.
+full_name: Plugin#find_loadpath
+is_singleton: false
+name: find_loadpath
+params: (match, options={})
+visibility: public

@@ -46,7 +46,7 @@
       <h3 class="section-header">File Stats</h3>
       <dl>
         <dt class="modified-date">Last Modified</dt>
-        <dd class="modified-date">Tue Nov 24 21:13:29 -0500 2009</dd>
+        <dd class="modified-date">Sun Feb 07 11:55:21 -0500 2010</dd>
 
         
 
@@ -63,11 +63,9 @@
         
           <li class="file"><a href="../../files/HISTORY.html">HISTORY</a></li>
         
-          <li class="file"><a href="../../files/Syckfile.html">Syckfile</a></li>
-        
           <li class="file"><a href="../../files/COPYING.html">COPYING</a></li>
         
-          <li class="file"><a href="../../files/README.html">README</a></li>
+          <li class="file"><a href="../../files/README_rdoc.html">README.rdoc</a></li>
         
         </ul>
       </div>
@@ -160,10 +158,17 @@
 Find plugins across various library managers.
 </p>
 <p>
-All plugins are expected to be within a libraries designated loadpath(s)
-under a <tt>plugin/</tt> subdirectory. By using this assigned space, ie.
-<tt>plugin/<tt>, plugins are kept isolated from normal libary scripts. This
+All plugins are expected to be within a library&#8217;s designated
+loadpath(s) under a toplevel <tt>plugins/</tt> subdirectory. By using this
+assigned space plugins are kept isolated from normal library scripts, which
 helps prevent inadvertent name clashes.
+</p>
+<p>
+For example, lets say we want to create a pluggable template system for our
+&#8220;luckyweb&#8221; project. Our <tt>lib/</tt> directory would have the
+usual <tt>luckyweb</tt> directory, but also now a
+<tt>plugins/luckyweb/</tt> path in which the plugin templates would be
+stored.
 </p>
 <h2>How To Use</h2>
 <p>
@@ -178,6 +183,16 @@ A shortcut is provided with <tt>[]</tt>.
 </p>
 <pre>
     Plugin['syckle/*']
+</pre>
+<h2>Alternate <a href="../../classes/Plugin.html">Plugin</a> Location</h2>
+<p>
+By default <tt>plugins/</tt> is hardcoded into the system as a reliable
+convention. This is intentional. However, if you have specific need for
+serching for files outside that directory you can do so by supplying a
+<tt>:directory</tt> option to the <tt>find</tt> command. Eg.
+</p>
+<pre>
+    Plugin.find('discover.rb', :directory=&gt;'rdoc')
 </pre>
 <h2>A Note on RubyGems</h2>
 <p>

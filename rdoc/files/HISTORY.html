@@ -46,7 +46,7 @@
       <h3 class="section-header">File Stats</h3>
       <dl>
         <dt class="modified-date">Last Modified</dt>
-        <dd class="modified-date">Thu Nov 19 12:12:40 -0500 2009</dd>
+        <dd class="modified-date">Sun Feb 07 13:02:21 -0500 2010</dd>
 
         
 
@@ -63,11 +63,9 @@
         
           <li class="file"><a href="../files/HISTORY.html">HISTORY</a></li>
         
-          <li class="file"><a href="../files/Syckfile.html">Syckfile</a></li>
-        
           <li class="file"><a href="../files/COPYING.html">COPYING</a></li>
         
-          <li class="file"><a href="../files/README.html">README</a></li>
+          <li class="file"><a href="../files/README_rdoc.html">README.rdoc</a></li>
         
         </ul>
       </div>
@@ -156,9 +154,46 @@
 
   <div id="documentation">
     <h1>RELEASE <a href="HISTORY.html">HISTORY</a></h1>
-<h2>0.1 / 2009-11-19</h2>
+<h2>1.1 / 2010-02-07</h2>
 <p>
-This is the initial release of Plug.
+This release includes two significant adjustments.
+</p>
+<p>
+First, the conventional plugin directory has been renamed to
+&#8216;plugins/&#8217;, instead of &#8216;plugin/&#8217;. I frequently shy
+away from plural names (as in the tendency in Ruby), but in this case I
+believe it helps differentiate it from regular library directories. It also
+frees &#8216;plugin/&#8217; should any separate scripts be required for
+this project in the future.
+</p>
+<p>
+Second, should one need to search outside of the conventional
+&#8216;plugins/&#8217; location, the find method will accept a :directory
+option. This usage is discouraged, but is made available for the rare cases
+in which it might prove necessary.
+</p>
+<p>
+Changes:
+</p>
+<ul>
+<li>Standard <a href="../classes/Plugin.html">Plugin</a> directory is
+&#8216;plugins/&#8217; instead of &#8216;plugin/&#8217;.
+
+</li>
+<li>Can specify an alternate plugin directory by passing an option to find.
+
+</li>
+<li>$LOAD_PATHS are expanded, so all paths are returned as full path names.
+
+</li>
+</ul>
+<h2>1.0 / 2009-11-24</h2>
+<p>
+This is the first official public release of <a
+href="../classes/Plugin.html">Plugin</a>. <a
+href="../classes/Plugin.html">Plugin</a> provides a very easy way to locate
+plugins, and this making it super easy for your project to support
+pluggable components.
 </p>
 <p>
 Changes:

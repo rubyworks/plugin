@@ -1,0 +1,14 @@
+--- !ruby/object:RDoc::RI::MethodDescription 
+aliases: []
+
+block_params: 
+comment: 
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: Search latest gem versions.
+- !ruby/struct:RDoc::Markup::Flow::P 
+  body: "TODO: Is there anyway to skip active gems?"
+full_name: Plugin#find_gems
+is_singleton: false
+name: find_gems
+params: (match, options={})
+visibility: public
