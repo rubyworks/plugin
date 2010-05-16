@@ -1,0 +1,22 @@
+--- 
+title  : Plugin
+suite  : rubyworks
+summary: General Purpose Plugin Handler
+contact: Trans <trasfire@gmail.com>
+license: MIT
+authors: Thomas Sawyer
+created: 2008-08-17 09:00:06
+
+description:
+  Plugins is a general purpose plugin handler for Ruby.
+  (Note: This has nothing to do with Rails plugins.)
+
+resources:
+  homepage   : http://rubyworks.github.com/plugin
+  development: http://github.com/rubyworks/plugin
+  repository : git://github.com/rubyworks/plugin.git
+  subscribe  : proutils@librelist.com
+
+copyright:
+  Copyright (c) 2008 Thomas Sawyer
+
