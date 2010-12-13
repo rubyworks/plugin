@@ -1,22 +1,13 @@
-#!mast -x Syckfile bin lib meta test [A-Z]*
+#!mast -x Syckfile -x PROFILE .ruby bin lib man spec test [A-Z]*
+.ruby/date
+.ruby/loadpath
+.ruby/name
+.ruby/version
 lib/plugin.rb
-meta/authors
-meta/collection
-meta/contact
-meta/created
-meta/description
-meta/homepage
-meta/license
-meta/name
-meta/released
-meta/repository
-meta/ruby
-meta/summary
-meta/title
-meta/version
 test/demos/helper.rb
 test/demos/plugins/example.rb
 test/demos/usage.rdoc
 README.rdoc
 HISTORY
+VERSION
 COPYING
