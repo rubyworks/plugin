@@ -13,7 +13,7 @@ choosing within the +plugins+ loadpath.
 The +find+ method returns full path names.
 
   File.expand_path(file).assert == file
-  file.assert.ends_with?('plugins/example.rb')
+  file.assert.end_with?('example.rb')
 
 As with any Ruby script we can require it.
 
