@@ -1,6 +1,27 @@
 = RELEASE HISTORY
 
-== 1.1 / 2010-02-07
+== 1.2.0 / 2012-01-03
+
+This is a major overhaul of the system. The most appaent change
+is the remove of the default `plugins` location. Now the search
+utility simply search the loadable paths from the top. If you
+still want to use the plugins directory, that's a good idea and
+you simply need to prepend `plugins/` to your search terms. E.g
+
+    Plugin.find('foo')  -> Plugin.find('plugins/foo')
+
+In addition to this the underlying implementation has been greatly
+improved and does so to a large extent by appropriately extending
+the underlying library systems with which it interfaces.
+
+Changes:
+
+* Deprecate default `plugins/` location.
+* Improve implementation via system extensions.
+* Improve Gem search to always return proper results.
+
+
+== 1.1.0 / 2010-02-07
 
 This release includes two significant adjustments.
 
@@ -22,7 +43,7 @@ Changes:
 * $LOAD_PATHS are expanded, so all paths are returned as full path names.
 
 
-== 1.0 / 2009-11-24
+== 1.0.0 / 2009-11-24
 
 This is the first official public release of Plugin.
 Plugin provides a very easy way to locate plugins, and

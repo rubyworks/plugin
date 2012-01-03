@@ -1,5 +1,7 @@
-.cache
+.reap/digest
+.yardoc
 log
-doc/rdoc
-doc/ri
+doc
 pkg
+tmp
+
